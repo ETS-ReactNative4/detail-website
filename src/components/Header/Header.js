@@ -8,10 +8,10 @@ export default class Header extends Component {
     render(){
         return(
             <div>
-                <header>
-                    <p>logo</p>
+                <header className='HeaderWrapper'>
+                    logo
                     <HashRouter>
-                        <div>
+                        <div className='navLinks'>
                             <Link to='/' >Home</Link>
                             <Link to='/services' >Services</Link>
                             <Link to='/pricing'>Pricing</Link>

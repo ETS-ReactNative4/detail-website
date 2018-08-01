@@ -1,11 +1,26 @@
 import React, {Component} from 'react';
+import {HashRouter, Link} from 'react-router-dom';
+
+
+import './LandingPage.css'
+import powerWasher from '../../images/foam-cannon.jpg';
 
 export default class LandingPage extends Component {
     render (){
         return(
             <div>
-                <p>LandingPage</p>
-                <img src={"http://autoflections.com/wp-content/uploads/2016/11/iStock-479966184-e1480355157141-750x442.jpg"} alt="" />
+                <p>LandingPage (Home)</p>
+                <div>
+                    <HashRouter>
+                        <div className='pictureLinks'>
+                            <Link to='/services' ><button>Services</button></Link>
+                            <Link to='/scheduling' ><button>Schedule Now</button></Link>
+                        </div>
+                    </HashRouter>
+                </div>
+                <div className='LandingPageWrapper'>
+                    <img src={powerWasher} alt="" />
+                </div>
             </div>
         )
     }

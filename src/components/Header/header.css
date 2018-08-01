@@ -1,5 +1,13 @@
-header {
+.HeaderWrapper {
+    background-color: aqua;
+    height: 50px;
     display: flex;
     justify-content: space-around;
-    align-items: center
+    align-items: center;
+}
+
+.navLinks {
+    display: flex;
+    width: 50vw;
+    justify-content: space-around;
 }

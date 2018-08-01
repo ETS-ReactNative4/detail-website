@@ -1,0 +1,10 @@
+img {
+    width: 100%;
+    opacity: 0.4;
+    filter: alpha(opacity=50);
+}
+
+.pictureLinks {
+    display: flex;
+    justify-content: space-around;
+}
