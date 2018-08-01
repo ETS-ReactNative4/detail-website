@@ -12,7 +12,7 @@ export default class Login extends Component {
         return (
             <div>
                 <p>Login Component</p>
-                <button onClick={this.login}>Login</button>
+                <button onClick={this.login}>Login</button> 
             </div>
         )
     }
