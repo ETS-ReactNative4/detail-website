@@ -41,7 +41,14 @@ app.get('/auth/callback', async (req, res) => {
     let foundUser = await db.find_user([sub]);
 
     if(foundUser[0]){
+        //put on session
         req.session.user = foundUser[0];
+        res.redirect('/#/private')
+    } else {
+        //create user
+        let createdUser = await db.create_user([name, email, sub, picture])
+        // put on session
+        req.session.user = createdUser[0]
         res.redirect('/#/private')
     }
 })
