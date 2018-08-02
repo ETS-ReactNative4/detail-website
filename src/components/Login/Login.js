@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import LandingPage from './components/LandingPage/LandingPage'
 
 export default class Login extends Component {
 
@@ -12,7 +11,6 @@ export default class Login extends Component {
     render(){
         return (
             <div>
-                {/* <p>Login Component</p> */}
                 <button onClick={this.login}>Login</button> 
             </div>
         )

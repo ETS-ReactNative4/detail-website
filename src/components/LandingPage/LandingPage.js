@@ -18,8 +18,8 @@ export default class LandingPage extends Component {
                         </div>
                     </HashRouter>
                 </div>
-                <div className='LandingPageWrapper'>
-                    <img src={powerWasher} alt="" />
+                <div>
+                    <img className='landingPageImage' src={powerWasher} alt="" />
                 </div>
             </div>
         )

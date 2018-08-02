@@ -1,0 +1,51 @@
+/* @import "node_modules/react-toggle-switch/dist/css/switch.min.css"; */
+
+.pricingWrapper {
+    height: 80vh;
+    background-color: azure;
+}
+
+.pricingContainer {
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: space-around;
+    padding: 5vh 0vh;
+    height: 50vh;
+}
+
+/* ----------------------------- */
+
+.switch {
+    border:1px solid #ccc;
+    width:50px;
+    height:26px;
+    border-radius:13px;
+    cursor:pointer;
+    display:inline-block
+}
+
+.switch-toggle {
+    border:1px solid #999;
+    box-shadow:1px 1px 1px #ccc;
+    width:25px;
+    height:24px;
+    left:0;
+    border-radius:12px;
+    background:#fff;
+    position:relative;
+    transition:left .2s ease-in-out
+}
+
+.switch.on {
+    background:gray;
+}
+
+.switch.on .switch-toggle {
+    left:23px
+}
+
+.switch.disabled {
+    cursor:not-allowed
+}
+
+/* ----------------------------- */

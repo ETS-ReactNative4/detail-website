@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {updateUserData} from '../../ducks/users'
+import Login from '../Login/Login'
 
 class Private extends Component {
 
@@ -18,6 +19,7 @@ class Private extends Component {
     }
 
     render() {
+        console.log(this.props)
         let {user} = this.props
         return (
             <div>
@@ -25,13 +27,13 @@ class Private extends Component {
                 {
                     user.user_name ? (
                         <div>
-                            <p>Account Holder: {user.user_name}</p>
-                            <p>Account Email: {user.email}</p>
+                            <p>Name: {user.user_name}</p>
+                            <p>Email: {user.email}</p>
                             <p>Account Number: {user.auth_id}</p>
                             <img src={user.picture} alt="" />
                             <a href="http://localhost:4000/api/logout"><button>Logout</button></a>
                         </div>
-                    ) : <p>Please log in.</p>
+                    ) : <p>Please log in. <Login /></p> 
                 }
             </div>
         )
