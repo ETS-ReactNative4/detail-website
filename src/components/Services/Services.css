@@ -1,0 +1,23 @@
+.servicesWrapper {
+    height: 80vh;
+    background-color: brown;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.intExt {
+    width: 30vw;
+    background-color: lightblue;
+    height: 50vh;
+}
+.int {
+    width: 30vw;
+    background-color: lightcoral;
+    height: 50vh;
+}
+.ext {
+    width: 30vw;
+    background-color: lightgreen;
+    height: 50vh;
+}

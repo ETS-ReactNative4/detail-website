@@ -4,7 +4,8 @@ import './App.css';
 // import Login from './components/Login/Login';
 import Private from './components/Private/Private';
 import Header from './components/Header/Header';
-import LandingPage from './components/LandingPage/LandingPage'
+import LandingPage from './components/LandingPage/LandingPage';
+import Services from './components/Services/Services';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={LandingPage} />
             <Route path='/private' component={Private} />
+            <Route path='/services' component={Services} />
           </Switch>
         </HashRouter>
       {/* <LandingPage /> */}
