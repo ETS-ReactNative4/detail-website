@@ -28,7 +28,7 @@ export default class Pricing extends Component {
                 <h1>Pricing</h1>
                 <div>
                     <Switch onClick={this.toggleSwitch} on={this.state.switched}/>
-                    {this.state.switched ? <p>Tap switch for one-time pricing</p> : <p>Tap switch for subscription pricing</p>}
+                    {this.state.switched ? <p>Toggle for one-time pricing</p> : <p>Toggle for subscription pricing</p>}
                 </div>
                 <div className='pricingContainer'>
                     <div>column 1</div>

@@ -3,6 +3,9 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {updateUserData} from '../../ducks/users'
 import Login from '../Login/Login'
+import AddACar from './AddACar/AddACar'
+
+import './Private.css'
 
 class Private extends Component {
 
@@ -19,21 +22,23 @@ class Private extends Component {
     }
 
     render() {
-        console.log(this.props)
         let {user} = this.props
         return (
             <div>
                 <h1>Account Information</h1>
                 {
                     user.user_name ? (
-                        <div>
-                            <p>Name: {user.user_name}</p>
-                            <p>Email: {user.email}</p>
-                            <p>Account Number: {user.auth_id}</p>
+                        <div className='userInfo'>
                             <img src={user.picture} alt="" />
+                            <p>{user.user_name}</p>
+                            <p>{user.email}</p>
                             <a href="http://localhost:4000/api/logout"><button>Logout</button></a>
                         </div>
-                    ) : <p>Please log in. <Login /></p> 
+                    ) : <div>
+                            <p>Please log in.</p> 
+                            <Login /> 
+                            <AddACar />
+                        </div>
                 }
             </div>
         )

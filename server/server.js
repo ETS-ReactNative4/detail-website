@@ -5,6 +5,8 @@ const axios = require('axios');
 const massive = require('massive');
 require('dotenv').config();
 
+const cars_controller = require('./controllers/cars_controller')
+
 const {
     SERVER_PORT,
     REACT_APP_DOMAIN,
@@ -16,9 +18,18 @@ const {
 
 const app = express();
 
-massive( CONNECTION_STRING ).then( dbInstance => {
-    app.set('db', dbInstance)
-}).catch(err => console.log(err))
+massive( CONNECTION_STRING ).then( dbInstance => {app.set('db', dbInstance)
+
+    // dbInstance.new_cars()
+    //     .then(car => console.log(car))
+    //     .catch(err => console.log(err))
+
+    // dbInstance.get_cars()
+    //     .then(car => console.log(car))
+    //     .catch(err => console.log(err))
+
+})
+
 
 app.use( session({
     secret: SESSION_SECRET,
@@ -26,6 +37,14 @@ app.use( session({
     saveUninitialized: false
 }) );
 
+
+// ENDPOINTS
+
+// cars_controller
+app.get('/api/cars', cars_controller.read)
+
+
+// Auth0
 app.get('/auth/callback', async (req, res) => {
     let payload = {
         client_id: REACT_APP_CLIENT_ID,
@@ -65,5 +84,6 @@ app.get('/api/logout', (req, res) => {
     req.session.destroy();
     res.redirect('http://localhost:3000')
 })
+// Auth0
 
 app.listen(SERVER_PORT, () => { console.log(`I can throw a pigskin a quarter mile. Port: ${SERVER_PORT}`)})
