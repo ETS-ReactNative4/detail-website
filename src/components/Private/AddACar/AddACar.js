@@ -17,7 +17,7 @@ export default class AddACar extends Component {
         this.handleAddCar = this.handleAddCar.bind(this);
     }
 
-    getCars(){
+    componentDidMount(){
         axios.get('/api/cars').then(res => {
             this.setState({carsList: res.data})
         })

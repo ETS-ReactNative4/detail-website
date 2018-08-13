@@ -41,7 +41,12 @@ app.use( session({
 // ENDPOINTS
 
 // cars_controller
-app.get('/api/cars', cars_controller.read)
+app.post( '/api/car', cars_controller.create );
+app.get( '/api/cars', cars_controller.getAll );
+app.get( '/api/car/:id', cars_controller.getOne );
+app.put( '/api/car/:id', cars_controller.update );
+app.delete( '/api/car/:id', cars_controller.delete );
+// cars_controller
 
 
 // Auth0

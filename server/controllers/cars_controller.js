@@ -1,49 +1,75 @@
-let books = [];
-let id = 0;
+// module.exports = {
+//     read: (req, res, next ) => {
+//         const dbInstance = req.app.get('db');
+
+//         dbInstance.get_cars()
+//             .then(cars => {res.status(200).send(cars); })
+//             .catch(err => {
+//                 console.log(err);
+//                 res.status(500).send(err);
+//             });
+//         },
+// }
+
+let allCars = []
 
 module.exports = {
-    read: (req, res, next ) => {
-        const dbInstance = req.app.get('db');
-
-        dbInstance.get_cars()
-            .then(cars => {res.status(200).send(cars); })
-            .catch(err => {
-                console.log(err);
-                res.status(500).send(err);
-            });
-        },
-
-    // create: (req, res) => {
-    //     const {title, author} = req.body;
-    //     let book = {
-    //         id: id,
-    //         title: title,
-    //         author: author
-    //     }
-    //     books.push( book );
-    //     id++;
-    //     res.status(200).send( books );
-    // },
-    // update: (req, res) => {
-    //     let index = null;
-    //     books.forEach((book, i) => {
-    //         if(book.id === Number(req.params.id)) index = i;
-    //     })
-
-    //     books[index] = {
-    //         id: books[index].id,
-    //         title: req.body.title || books[index].title,
-    //         author: req.body.author || books[index].author
-    //     }
-    //     res.status(200).send(books);
-    // },
-    // delete: (req, res) => {
-    //     let index = null;
-    //     books.forEach((book, i) => {
-    //         if(book.id === Number(req.params.id)) index = i;
-    //     })
-
-    //     books.splice(index,1)
-    //     res.status(200).send(books);
-    // }
-}
+    create: ( req, res, next ) => {
+      const dbInstance = req.app.get('db');
+      const {year, make, model, rowsofseats, licenseplate} = req.body;
+  
+      dbInstance.add_car([year, make, model, rowsofseats, licenseplate])
+        .then( () => res.sendStatus(200) )
+        .catch( err => {
+          res.status(500).send({errorMessage: "----- Something went wrong -----"});
+          console.log(err)
+        } );
+    },
+  
+    getOne: ( req, res, next ) => {
+      const dbInstance = req.app.get('db');
+      const {params} = req;
+  
+      dbInstance.read_car([params.id])
+        .then( car => res.status(200).send( car ) )
+        .catch( err => {
+          res.status(500).send({errorMessage: "----- Something went wrong -----"});
+          console.log(err)
+        } );
+    },
+  
+    getAll: ( req, res, next ) => {
+      const dbInstance = req.app.get('db/cars');
+  
+      dbInstance.get_cars()
+        .then( cars => res.status(200).send( cars ) )
+        .catch( err => {
+          res.status(500).send({errorMessage: "----- Something went wrong -----"});
+          console.log(err)
+        } );
+    },
+  
+    update: ( req, res, next ) => {
+      const dbInstance = req.app.get('db');
+      const {params, query} = req;
+  
+      dbInstance.update_car([params.id, query.desc])
+        .then( () => res.sendStatus(200) )
+        .catch( err => {
+          res.status(500).send({errorMessage: "----- Something went wrong -----"});
+          console.log(err)
+        } );
+    },
+  
+    delete: ( req, res, next ) => {
+      const dbInstance = req.app.get('db');
+      const {params} = req;
+  
+      dbInstance.delete_car([params.id])
+        .then( () => res.sendStatus(200) )
+        .catch( err => {
+          res.status(500).send({errorMessage: "----- Something went wrong -----"});
+          console.log(err)
+        } );
+    }
+  };
