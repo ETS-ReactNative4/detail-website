@@ -65,7 +65,17 @@ export default class AddACar extends Component {
         let mappedCarsList = this.state.carsList.map( (element, index) => {
             return (
                 <div key={'carsMapKey'+index}>
-                    <button>edit</button><button onClick={() => axios.delete('/api/car/' + element.id)}>delete</button>
+                    <button
+                        onClick={() => {
+                            axios.put('/api/car/' + element.id)
+                        }}
+                    >edit</button>
+                    <button 
+                        onClick={() => {
+                            axios.delete('/api/car/' + element.id)
+                            .then(() => this.state.carsList)}
+                        }>delete</button> 
+
                     <p key={'year'+index}>Year: {element.year}</p>
                     <p key={'make'+index}>Make: {element.make}</p>
                     <p key={'model'+index}>Model: {element.model}</p>
@@ -79,39 +89,41 @@ export default class AddACar extends Component {
             <div>
                 <div>
                     <h3>Add A Car</h3>
-                    <input  
-                        placeholder="Year" 
-                        value={this.state.year} 
-                        onChange={(e) => this.yearHandler(e.target.value)} 
-                    />
-                    <input 
-                        placeholder="Make" 
-                        value={this.state.make}
-                        onChange={(e) => this.makeHandler(e.target.value)} 
-                    />
-                    <input 
-                        placeholder="Model" 
-                        value={this.state.model}
-                        onChange={(e) => this.modelHandler(e.target.value)} 
-                    />
-                    Rows of Seats: <select 
-                        value={this.state.rowsOfSeats}
-                        onChange={(e) => this.rowsOfSeatsHandler(e.target.value)} 
-                        >
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <input 
-                        placeholder="License Plate #" 
-                        value={this.state.licensePlate}
-                        onChange={(e) => this.licensePlateHandler(e.target.value)} 
-                    />
+                    <form>
+                        <input  
+                            placeholder="Year" 
+                            value={this.state.year} 
+                            onChange={(e) => this.yearHandler(e.target.value)} 
+                        />
+                        <input 
+                            placeholder="Make" 
+                            value={this.state.make}
+                            onChange={(e) => this.makeHandler(e.target.value)} 
+                        />
+                        <input 
+                            placeholder="Model" 
+                            value={this.state.model}
+                            onChange={(e) => this.modelHandler(e.target.value)} 
+                        />
+                        Rows of Seats: <select 
+                            value={this.state.rowsOfSeats}
+                            onChange={(e) => this.rowsOfSeatsHandler(e.target.value)} 
+                            >
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                        <input 
+                            placeholder="License Plate #" 
+                            value={this.state.licensePlate}
+                            onChange={(e) => this.licensePlateHandler(e.target.value)} 
+                        />
 
-                    <button onClick={this.handleAddCar}>Add</button>
+                        <button onClick={this.handleAddCar}>Add</button>
+                    </form>
                 </div>
                 <div>
                     <br></br>

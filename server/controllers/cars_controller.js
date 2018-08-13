@@ -49,9 +49,9 @@ module.exports = {
   
     update: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
-      const {params, query} = req;
+      const {id, year, make, model, rowsofseats, licenseplate} = req.body;
   
-      dbInstance.cars.update_car([params.id, query.desc])
+      dbInstance.cars.update_car([id, year, make, model, rowsofseats, licenseplate])
         .then( () => res.sendStatus(200) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
