@@ -43,30 +43,22 @@ export default class AddACar extends Component {
         this.setState({licensePlate: input})
     }
     
-    handleAddCar (year, make, model, rowsOfSeats, licensePlate){
+    handleAddCar (){
         let newCar = {
-            year: this.year,
-            make: this.make,
-            model: this.model,
-            rowsOfSeats: this.rowsOfSeats,
-            licensePlate: this.licensePlate
+            year: this.state.year,
+            make: this.state.make,
+            model: this.state.model,
+            rowsofseats: this.state.rowsOfSeats,
+            licenseplate: this.state.licensePlate
         }
         // Axios (POST) from the react 3 mini code line 119 in app.js
         //then setState with the response
 
         let promise = axios.post('/api/car', newCar)
         promise.then((response) => {
-            this.setState({carsList: response.data})
+            this.state.carsList.push(response)
         })
     }
-
-    handleDeleteCar (id){
-        let promise = axios.delete('/api/car/:id', id)
-        promise.then((response) => {
-            this.setState({carsList: response.data})
-        })
-    }
-
     
     render (){
         console.log(this.state)
@@ -119,7 +111,7 @@ export default class AddACar extends Component {
                         onChange={(e) => this.licensePlateHandler(e.target.value)} 
                     />
 
-                    <button onClick={this.handleAddCar} >Add</button>
+                    <button onClick={this.handleAddCar}>Add</button>
                 </div>
                 <div>
                     <br></br>
