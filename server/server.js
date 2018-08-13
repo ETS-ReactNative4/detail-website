@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const axios = require('axios');
 // const bodyParser = require('body-parser');
@@ -17,7 +18,7 @@ const {
 } = process.env
 
 const app = express();
-
+app.use( bodyParser.json() );
 massive( CONNECTION_STRING ).then( dbInstance => {app.set('db', dbInstance)
 
     // dbInstance.new_cars()

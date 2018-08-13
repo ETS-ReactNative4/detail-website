@@ -45,15 +45,26 @@ export default class AddACar extends Component {
     
     handleAddCar (year, make, model, rowsOfSeats, licensePlate){
         let newCar = {
-            year: year,
-            make: make,
-            model: model,
-            rowsOfSeats: rowsOfSeats,
-            licensePlate: licensePlate
+            year: this.year,
+            make: this.make,
+            model: this.model,
+            rowsOfSeats: this.rowsOfSeats,
+            licensePlate: this.licensePlate
         }
-        //You should add an axios (POST) like the react 3 mini code has on line 119
+        // Axios (POST) from the react 3 mini code line 119 in app.js
         //then setState with the response
-        this.setState({carsList: newCar})
+
+        let promise = axios.post('/api/car', newCar)
+        promise.then((response) => {
+            this.setState({carsList: response.data})
+        })
+    }
+
+    handleDeleteCar (id){
+        let promise = axios.delete('/api/car/:id', id)
+        promise.then((response) => {
+            this.setState({carsList: response.data})
+        })
     }
 
     
@@ -62,7 +73,7 @@ export default class AddACar extends Component {
         let mappedCarsList = this.state.carsList.map( (element, index) => {
             return (
                 <div key={'carsMapKey'+index}>
-                    <button>edit</button><button>delete</button>
+                    <button>edit</button><button onClick={() => axios.delete('/api/car/' + element.id)}>delete</button>
                     <p key={'year'+index}>Year: {element.year}</p>
                     <p key={'make'+index}>Make: {element.make}</p>
                     <p key={'model'+index}>Model: {element.model}</p>
@@ -111,7 +122,6 @@ export default class AddACar extends Component {
                     <button onClick={this.handleAddCar} >Add</button>
                 </div>
                 <div>
-                    {console.log(this.state)}
                     <br></br>
                     <br></br>
                     {mappedCarsList}

@@ -16,7 +16,7 @@ module.exports = {
       const dbInstance = req.app.get('db');
       const {year, make, model, rowsofseats, licenseplate} = req.body;
   
-      dbInstance.add_car([year, make, model, rowsofseats, licenseplate])
+      dbInstance.cars.add_car([year, make, model, rowsofseats, licenseplate])
         .then( () => res.sendStatus(200) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
@@ -28,7 +28,7 @@ module.exports = {
       const dbInstance = req.app.get('db');
       const {params} = req;
   
-      dbInstance.read_car([params.id])
+      dbInstance.cars.read_car([params.id])
         .then( car => res.status(200).send( car ) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
@@ -51,7 +51,7 @@ module.exports = {
       const dbInstance = req.app.get('db');
       const {params, query} = req;
   
-      dbInstance.update_car([params.id, query.desc])
+      dbInstance.cars.update_car([params.id, query.desc])
         .then( () => res.sendStatus(200) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
@@ -63,7 +63,7 @@ module.exports = {
       const dbInstance = req.app.get('db');
       const {params} = req;
   
-      dbInstance.delete_car([params.id])
+      dbInstance.cars.delete_car(params.id)
         .then( () => res.sendStatus(200) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
