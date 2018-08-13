@@ -43,17 +43,6 @@ export default class AddACar extends Component {
         this.setState({licensePlate: input})
     }
     
-    // handleAddCar (){
-    //     this.setState({
-    //         carsList: [ ...this.state.carsList, this.state.year, this.state.make, this.state.model, this.state.rowsOfSeats, this.state.licensePlate],
-    //         year: '',
-    //         make: '',
-    //         model: '',
-    //         rowsOfSeats: 0,
-    //         licensePlate: ''
-    //     })
-    // }
-
     handleAddCar (year, make, model, rowsOfSeats, licensePlate){
         let newCar = {
             year: year,
@@ -70,15 +59,22 @@ export default class AddACar extends Component {
     
     render (){
         console.log(this.state)
-        // let mappedCarsList = this.state.carsList.map( (element, index) => {
-        //     return (
-        //         <p key={index}>{element}</p>
-        //     )
-        // })
+        let mappedCarsList = this.state.carsList.map( (element, index) => {
+            return (
+                <div key={'carsMapKey'+index}>
+                    <p key={'year'+index}>Year: {element.year}</p>
+                    <p key={'make'+index}>Make: {element.make}</p>
+                    <p key={'model'+index}>Model: {element.model}</p>
+                    <p key={'licplate'+index}>License Plate #: {element.licenseplate}</p>
+                    <p key={'rows'+index}>Rows of Seats: {element.rowsofseats}</p>
+                    <br></br>
+                </div>
+            )
+        })
         return (
             <div>
                 <div>
-                <h3>Add A Car</h3>
+                    <h3>Add A Car</h3>
                     <input  
                         placeholder="Year" 
                         value={this.handleAddCar.year} 
@@ -115,8 +111,7 @@ export default class AddACar extends Component {
                 </div>
                 <div>
                     {console.log(this.state)}
-                    <p>{JSON.stringify(this.state.carsList)}</p>
-                    {/* {mappedCarsList} */}
+                    {mappedCarsList}
                 </div>
             </div>
         )

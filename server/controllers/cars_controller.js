@@ -11,8 +11,6 @@
 //         },
 // }
 
-let allCars = []
-
 module.exports = {
     create: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
@@ -39,9 +37,9 @@ module.exports = {
     },
   
     getAll: ( req, res, next ) => {
-      const dbInstance = req.app.get('db/cars');
+      const dbInstance = req.app.get('db');
   
-      dbInstance.get_cars()
+      dbInstance.cars.get_cars()
         .then( cars => res.status(200).send( cars ) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
