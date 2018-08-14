@@ -17,7 +17,7 @@ module.exports = {
       const {year, make, model, rowsofseats, licenseplate} = req.body;
   
       dbInstance.cars.add_car([year, make, model, rowsofseats, licenseplate])
-        .then( () => res.sendStatus(200) )
+        .then( (cars) => res.status(200).send(cars) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
           console.log(err)
@@ -64,7 +64,7 @@ module.exports = {
       const {params} = req;
   
       dbInstance.cars.delete_car(params.id)
-        .then( () => res.sendStatus(200) )
+        .then( (cars) => res.status(200).send(cars) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
           console.log(err)

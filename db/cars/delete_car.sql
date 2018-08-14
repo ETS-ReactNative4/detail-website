@@ -1,2 +1,3 @@
-DELETE FROM cars WHERE id = $1
-RETURNING *
+DELETE FROM cars WHERE id = $1;
+select * from cars
+-- RETURNING *

@@ -14,13 +14,17 @@ export default class AddACar extends Component {
             rowsOfSeats: 0,
             licensePlate: ''
         }
+        this.yearHandler = this.yearHandler.bind(this);
+        this.makeHandler = this.makeHandler.bind(this);
+        this.modelHandler = this.modelHandler.bind(this);
+        this.rowsOfSeatsHandler = this.rowsOfSeatsHandler.bind(this);
+        this.licensePlateHandler = this.licensePlateHandler.bind(this);
         this.handleAddCar = this.handleAddCar.bind(this);
     }
 
     componentDidMount(){
-        axios.get('/api/cars').then(res => {
-            this.setState({carsList: res.data})
-        })
+        axios.get('/api/cars')
+            .then(res => this.setState({carsList: res.data}) )
     }
 
     yearHandler (input){
@@ -64,7 +68,7 @@ export default class AddACar extends Component {
         console.log(this.state)
         let mappedCarsList = this.state.carsList.map( (element, index) => {
             return (
-                <div key={'carsMapKey'+index}>
+                <div key={element.id}>
                     <button
                         onClick={() => {
                             axios.put('/api/car/' + element.id)
@@ -73,14 +77,14 @@ export default class AddACar extends Component {
                     <button 
                         onClick={() => {
                             axios.delete('/api/car/' + element.id)
-                            .then(() => this.state.carsList)}
+                            .then((res) => this.setState({carsList: res.data}))}
                         }>delete</button> 
 
-                    <p key={'year'+index}>Year: {element.year}</p>
-                    <p key={'make'+index}>Make: {element.make}</p>
-                    <p key={'model'+index}>Model: {element.model}</p>
-                    <p key={'licplate'+index}>License Plate #: {element.licenseplate}</p>
-                    <p key={'rows'+index}>Rows of Seats: {element.rowsofseats}</p>
+                    <p key={'year'+element.id}>Year: {element.year}</p>
+                    <p key={'make'+element.id}>Make: {element.make}</p>
+                    <p key={'model'+element.id}>Model: {element.model}</p>
+                    <p key={'licplate'+element.id}>License Plate #: {element.licenseplate}</p>
+                    <p key={'rows'+element.id}>Rows of Seats: {element.rowsofseats}</p>
                     <br></br>
                 </div>
             )
@@ -122,7 +126,10 @@ export default class AddACar extends Component {
                             onChange={(e) => this.licensePlateHandler(e.target.value)} 
                         />
 
-                        <button onClick={this.handleAddCar}>Add</button>
+                        <button onClick={
+                            this.handleAddCar
+                            
+                            }>Add</button>
                     </form>
                 </div>
                 <div>
