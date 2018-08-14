@@ -59,9 +59,18 @@ export default class AddACar extends Component {
         //then setState with the response
 
         axios.post('/api/car', newCar)
-            .then((response) => {this.state.carsList.push(response)})
-            .then(axios.get('/api/cars')
-            .then(res => this.setState({carsList: res.data}) ))
+            .then(() => {
+            axios.get('/api/cars')
+            .then(res => this.setState({
+                carsList: res.data,
+            
+                year: '',
+                make: '',
+                model: '',
+                rowsOfSeats: 0,
+                licensePlate: ''
+            }) )})
+        
     }
     
     render (){
