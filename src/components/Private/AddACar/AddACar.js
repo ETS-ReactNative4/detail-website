@@ -58,10 +58,10 @@ export default class AddACar extends Component {
         // Axios (POST) from the react 3 mini code line 119 in app.js
         //then setState with the response
 
-        let promise = axios.post('/api/car', newCar)
-        promise.then((response) => {
-            this.state.carsList.push(response)
-        })
+        axios.post('/api/car', newCar)
+            .then((response) => {this.state.carsList.push(response)})
+            .then(axios.get('/api/cars')
+            .then(res => this.setState({carsList: res.data}) ))
     }
     
     render (){
@@ -126,9 +126,8 @@ export default class AddACar extends Component {
                             onChange={(e) => this.licensePlateHandler(e.target.value)} 
                         />
 
-                        <button onClick={
-                            this.handleAddCar
-                            
+                        <button 
+                            onClick={this.handleAddCar                            
                             }>Add</button>
                     </form>
                 </div>
