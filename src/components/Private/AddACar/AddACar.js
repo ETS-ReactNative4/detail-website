@@ -118,7 +118,7 @@ export default class AddACar extends Component {
                                     onClick={() => {
                                         let newPlate = {licenseplate: this.state.licensePlate}
                                         axios.put('/api/car/' + element.id, newPlate)
-                                        .then((res) => this.setState({carsList: res.data, licenseplate: ''}))
+                                        .then((res) => this.setState({carsList: res.data, licensePlate: ''}))
                                     }}
                                 >Save</button> 
                             </p> : ''} 

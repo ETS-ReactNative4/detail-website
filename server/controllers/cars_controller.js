@@ -49,7 +49,10 @@ module.exports = {
   
     update: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
-      const {id, licenseplate} = req.body;
+      const {licenseplate} = req.body;
+      const {id} = req.params
+      console.log(req.body)
+      console.log(req.params.id)
   
       dbInstance.cars.update_car([id, licenseplate])
         .then( (cars) => res.status(200).send(cars) )
