@@ -24,6 +24,9 @@ class Private extends Component {
 
     render() {
         let {user} = this.props
+        console.log(user)
+        console.log(this.props.user.auth_id)
+        let userId = this.props.user.auth_id
         return (
             <div>
                 <h1>Account Information</h1>
@@ -34,11 +37,12 @@ class Private extends Component {
                             <p>{user.user_name}</p>
                             <p>{user.email}</p>
                             <Logout />
+                            <AddACar userId={userId}/>
                         </div>
                     ) : <div>
                             <p>Please log in.</p> 
                             <Login /> 
-                            <AddACar />
+                            {/* <AddACar /> */}
                         </div>
                 }
             </div>

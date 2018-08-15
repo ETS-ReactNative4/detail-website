@@ -3,11 +3,12 @@ import axios from 'axios';
 // import cars_controller from '../../../../server/controllers/cars_controller'
 
 export default class AddACar extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state = {
             carsList: [],
+            auth_id: this.props.userId,
             year: '',
             make: '',
             model: '',
@@ -15,6 +16,7 @@ export default class AddACar extends Component {
             licensePlate: '',
             editPlate: false
         }
+        this.auth_idHandler = this.auth_idHandler.bind(this);
         this.yearHandler = this.yearHandler.bind(this);
         this.makeHandler = this.makeHandler.bind(this);
         this.modelHandler = this.modelHandler.bind(this);
@@ -27,6 +29,10 @@ export default class AddACar extends Component {
     componentDidMount(){
         axios.get('/api/cars')
             .then(res => this.setState({carsList: res.data}) )
+    }
+
+    auth_idHandler(){
+        this.setState({auth_id: this.props.user})
     }
 
     yearHandler (input){
@@ -51,6 +57,7 @@ export default class AddACar extends Component {
     
     handleAddCar (){
         let newCar = {
+            auth_id: this.state.auth_id,
             year: this.state.year,
             make: this.state.make,
             model: this.state.model,
@@ -66,6 +73,7 @@ export default class AddACar extends Component {
             .then(res => this.setState({
                 carsList: res.data,
             
+                auth_id: '',
                 year: '',
                 make: '',
                 model: '',
@@ -115,6 +123,7 @@ export default class AddACar extends Component {
                                     onChange={(e) => this.handleSavePlate(e.target.value)}
                                     ></input> 
                                 <button
+                                    className='login button'
                                     onClick={() => {
                                         let newPlate = {licenseplate: this.state.licensePlate}
                                         axios.put('/api/car/' + element.id, newPlate)
@@ -126,7 +135,7 @@ export default class AddACar extends Component {
                                 className='login button' 
                                 key={'licplate'+element.id}
                                 onClick={this.handleEditPlate} 
-                                >{this.state.editPlate ? 'Save' : 'Update'}
+                                >{this.state.editPlate ? 'Finished Updating' : 'Update'}
                             </button>
                             
                     </div>

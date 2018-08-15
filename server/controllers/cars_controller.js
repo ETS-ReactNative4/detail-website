@@ -14,9 +14,9 @@
 module.exports = {
     create: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
-      const {year, make, model, rowsofseats, licenseplate} = req.body;
+      const {auth_id, year, make, model, rowsofseats, licenseplate} = req.body;
   
-      dbInstance.cars.add_car([year, make, model, rowsofseats, licenseplate])
+      dbInstance.cars.add_car([auth_id, year, make, model, rowsofseats, licenseplate])
         .then( (cars) => res.status(200).send(cars) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
