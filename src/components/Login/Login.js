@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Login.css'
 
 export default class Login extends Component {
 
@@ -11,7 +12,7 @@ export default class Login extends Component {
     render(){
         return (
             <div>
-                <button onClick={this.login}>Login</button> 
+                <button className='login button' onClick={this.login}>Login</button> 
             </div>
         )
     }

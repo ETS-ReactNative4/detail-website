@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const axios = require('axios');
 const massive = require('massive');
-require('dotenv').config();
+
+const app = express();
 
 const cars_controller = require('./controllers/cars_controller')
 
@@ -13,29 +15,26 @@ const {
     REACT_APP_CLIENT_ID,
     CLIENT_SECRET,
     SESSION_SECRET,
-    CONNECTION_STRING
-} = process.env
+    CONNECTION_STRING} = process.env;
 
-const app = express();
-app.use( bodyParser.json() );
-massive( CONNECTION_STRING ).then( dbInstance => {app.set('db', dbInstance)
-
+    massive(CONNECTION_STRING).then(dbInstance => {app.set('db', dbInstance)
+    
     // dbInstance.new_cars()
     //     .then(car => console.log(car))
     //     .catch(err => console.log(err))
-
+    
     // dbInstance.get_cars()
     //     .then(car => console.log(car))
     //     .catch(err => console.log(err))
-
+    
 })
 
-
-app.use( session({
+app.use( bodyParser.json() );
+app.use(session({
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false
-}) );
+}))
 
 
 // ENDPOINTS
@@ -62,18 +61,18 @@ app.get('/auth/callback', async (req, res) => {
     let resWithUserData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
     const db = req.app.get('db');
     let {sub, email, name, picture} = resWithUserData.data;
-    let foundUser = await db.find_user([sub]);
 
+    let foundUser = await db.users.find_user([sub]);
     if(foundUser[0]){
         //put on session
-        req.session.user = foundUser[0];
-        res.redirect('/#/private')
+        req.session.user = foundUser[0]
+        res.redirect('/#/private')  // the '/' stands for 'http://localhost:3000/' - so we're redirecting to the home page // this command sends a redirect command to the browser
     } else {
         //create user
-        let createdUser = await db.create_user([name, email, sub, picture])
-        // put on session
-        req.session.user = createdUser[0]
-        res.redirect('/#/private')
+        let createdUser = await db.users.create_user([name, email, sub, picture]);
+        //put on session
+        req.session.user = createdUser[0];
+        res.redirect('/#/private');
     }
 })
 
@@ -87,8 +86,10 @@ app.get('/api/user-data', (req, res) => {
 
 app.get('/api/logout', (req, res) => {
     req.session.destroy();
-    res.redirect('http://localhost:3000')
+    res.redirect('http://localhost:3000/')
 })
 // Auth0
 
-app.listen(SERVER_PORT, () => { console.log(`I can throw a pigskin a quarter mile. Port: ${SERVER_PORT}`)})
+app.listen(SERVER_PORT, () => {
+    console.log(`I can throw a pigskin a quarter mile. Port: ${SERVER_PORT}`);
+});

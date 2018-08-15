@@ -12,7 +12,8 @@ export default class AddACar extends Component {
             make: '',
             model: '',
             rowsOfSeats: 0,
-            licensePlate: ''
+            licensePlate: '',
+            editPlate: false
         }
         this.yearHandler = this.yearHandler.bind(this);
         this.makeHandler = this.makeHandler.bind(this);
@@ -72,6 +73,10 @@ export default class AddACar extends Component {
             }) )})
         
     }
+
+    handleEditPlate (input){
+        this.state.editPlate === false ? console.log(false) : console.log(true)
+    }
     
     render (){
         console.log(this.state)
@@ -79,11 +84,14 @@ export default class AddACar extends Component {
             return (
                 <div key={element.id}>
                     <button
+                        className='login button'
                         onClick={() => {
+                            // this.handleEditPlate
                             axios.put('/api/car/' + element.id)
                         }}
                     >edit</button>
                     <button 
+                        className='login button'
                         onClick={() => {
                             axios.delete('/api/car/' + element.id)
                             .then((res) => this.setState({carsList: res.data}))}
@@ -92,7 +100,7 @@ export default class AddACar extends Component {
                     <p key={'year'+element.id}>Year: {element.year}</p>
                     <p key={'make'+element.id}>Make: {element.make}</p>
                     <p key={'model'+element.id}>Model: {element.model}</p>
-                    <p key={'licplate'+element.id}>License Plate #: {element.licenseplate}</p>
+                    <p key={'licplate'+element.id}>License Plate #: {element.licenseplate} <button className='login button' key={'licplate'+element.id}>update</button></p>
                     <p key={'rows'+element.id}>Rows of Seats: {element.rowsofseats}</p>
                     <br></br>
                 </div>
@@ -128,6 +136,11 @@ export default class AddACar extends Component {
                             <option>3</option>
                             <option>4</option>
                             <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
                         </select>
                         <input 
                             placeholder="License Plate #" 
@@ -136,6 +149,7 @@ export default class AddACar extends Component {
                         />
 
                         <button 
+                            className='login button'
                             onClick={this.handleAddCar                            
                             }>Add</button>
                     </form>

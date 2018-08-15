@@ -3,6 +3,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {updateUserData} from '../../ducks/users'
 import Login from '../Login/Login'
+import Logout from '../Logout/Logout'
 import AddACar from './AddACar/AddACar'
 
 import './Private.css'
@@ -32,7 +33,7 @@ class Private extends Component {
                             <img src={user.picture} alt="" />
                             <p>{user.user_name}</p>
                             <p>{user.email}</p>
-                            <a href="http://localhost:4000/api/logout"><button>Logout</button></a>
+                            <Logout />
                         </div>
                     ) : <div>
                             <p>Please log in.</p> 
