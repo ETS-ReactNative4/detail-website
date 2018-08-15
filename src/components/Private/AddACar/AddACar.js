@@ -21,6 +21,7 @@ export default class AddACar extends Component {
         this.rowsOfSeatsHandler = this.rowsOfSeatsHandler.bind(this);
         this.licensePlateHandler = this.licensePlateHandler.bind(this);
         this.handleAddCar = this.handleAddCar.bind(this);
+        this.handleEditPlate = this.handleEditPlate.bind(this);
     }
 
     componentDidMount(){
@@ -74,8 +75,14 @@ export default class AddACar extends Component {
         
     }
 
-    handleEditPlate (input){
-        this.state.editPlate === false ? console.log(false) : console.log(true)
+    handleEditPlate (){
+        this.setState(prevState => ({
+            editPlate: !prevState.editPlate
+        }))
+    }
+
+    handleSavePlate (input){
+        this.setState({licensePlate: input})
     }
     
     render (){
@@ -86,7 +93,6 @@ export default class AddACar extends Component {
                     <button
                         className='login button'
                         onClick={() => {
-                            // this.handleEditPlate
                             axios.put('/api/car/' + element.id)
                         }}
                     >edit</button>
@@ -100,7 +106,33 @@ export default class AddACar extends Component {
                     <p key={'year'+element.id}>Year: {element.year}</p>
                     <p key={'make'+element.id}>Make: {element.make}</p>
                     <p key={'model'+element.id}>Model: {element.model}</p>
-                    <p key={'licplate'+element.id}>License Plate #: {element.licenseplate} <button className='login button' key={'licplate'+element.id}>update</button></p>
+                    <div key={'licplate'+element.id}> 
+                        License Plate #: {element.licenseplate} 
+                        {this.state.editPlate === true ? 
+                            <p> 
+                                <input 
+                                    placeholder={element.licenseplate}
+                                    onChange={(e) => this.handleSavePlate(e.target.value)}
+                                    ></input> 
+                                <button
+                                    onClick={() => {
+                                        let newPlate = {licenseplate: this.state.licensePlate}
+                                        axios.put('/api/car/' + element.id, newPlate)
+                                        .then((res) => this.setState({carsList: res.data, licenseplate: ''}))
+                                    }}
+                                >Save</button> 
+                            </p> : ''} 
+                            <button 
+                                className='login button' 
+                                key={'licplate'+element.id}
+                                onClick={this.handleEditPlate} 
+                                >{this.state.editPlate ? 'Save' : 'Update'}
+                            </button>
+                            
+                    </div>
+                    <p>
+                        {}
+                    </p>
                     <p key={'rows'+element.id}>Rows of Seats: {element.rowsofseats}</p>
                     <br></br>
                 </div>
