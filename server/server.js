@@ -54,12 +54,13 @@ app.delete( '/api/car/:id', cars_controller.delete );
 
 // Auth0
 app.get('/auth/callback', async (req, res) => {
+    try{
     let payload = {
         client_id: REACT_APP_CLIENT_ID,
         client_secret: CLIENT_SECRET,
         code: req.query.code,
         grant_type: 'authorization_code',
-        redirect_uri: `http://${req.headers.host}/auth/callback`
+        redirect_uri: `${process.env.PROTOCOL}://${req.headers.host}/auth/callback`
     }
     let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)
     let resWithUserData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
@@ -78,6 +79,7 @@ app.get('/auth/callback', async (req, res) => {
         req.session.user = createdUser[0];
         res.redirect('/#/private');
     }
+}catch(err){console.error(err)}
 })
 
 app.get('/api/user-data', (req, res) => {
