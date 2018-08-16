@@ -1,8 +1,16 @@
 import React from 'react';
+import Link from 'react-router-dom';
+import axios from "axios";
 
-export default function logout(){
-    return (
-    <div>
-        <a href="http://localhost:4000/api/logout"><button className='login button'>Logout</button></a>
+const {REACT_APP_FULL_SERVER_URL} = process.env;
+
+export default class logout extends React.Component{
+    render(){
+
+        console.log("hello")
+        return (
+            <div>
+        <button className='login button' onClick={() => {axios.get('/api/logout')}}>Logout</button>
     </div>
     )}
+}

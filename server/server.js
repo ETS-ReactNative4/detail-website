@@ -1,3 +1,4 @@
+const path = require('path');
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -11,6 +12,7 @@ const cars_controller = require('./controllers/cars_controller')
 
 const {
     SERVER_PORT,
+    LOCAL_HOST_URL,
     REACT_APP_DOMAIN,
     REACT_APP_CLIENT_ID,
     CLIENT_SECRET,
@@ -28,6 +30,8 @@ const {
     //     .catch(err => console.log(err))
     
 })
+
+app.use( express.static( `${__dirname}/../build` ) );
 
 app.use( bodyParser.json() );
 app.use(session({
@@ -86,9 +90,16 @@ app.get('/api/user-data', (req, res) => {
 
 app.get('/api/logout', (req, res) => {
     req.session.destroy();
-    res.redirect('http://localhost:3000/')
+    res.sendStatus(200)
+    // res.redirect(LOCAL_HOST_URL)
 })
 // Auth0
+
+// Hosting
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+// Hosting
 
 app.listen(SERVER_PORT, () => {
     console.log(`I can throw a pigskin a quarter mile. Port: ${SERVER_PORT}`);

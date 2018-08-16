@@ -9,7 +9,9 @@ export default class Header extends Component {
         return(
             <div>
                 <header className='HeaderWrapper'>
-                    logo
+                    <img id='logo   Image' alt='mountains' src={require('../../images/MountainArt.png')}></img>
+                    <div className='logo'>
+                    RockyMountainDetail</div>
                     <HashRouter>
                         <div className='navLinks'>
                             <Link to='/' >Home</Link>
