@@ -24,8 +24,6 @@ class Private extends Component {
 
     render() {
         let {user} = this.props
-        console.log(user)
-        console.log(this.props.user.auth_id)
         let userId = this.props.user.auth_id
         return (
             <div>

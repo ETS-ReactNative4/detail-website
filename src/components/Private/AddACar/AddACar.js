@@ -24,10 +24,14 @@ export default class AddACar extends Component {
         this.licensePlateHandler = this.licensePlateHandler.bind(this);
         this.handleAddCar = this.handleAddCar.bind(this);
         this.handleEditPlate = this.handleEditPlate.bind(this);
+        this.updateCarsArray = this.updateCarsArray.bind(this);
     }
 
     componentDidMount(){
-        // console.log(this.state.auth_id)
+        this.updateCarsArray()
+    }
+
+    updateCarsArray () {
         axios.get('/api/cars/'+this.state.auth_id)
             .then(res => this.setState({carsList: res.data}) )
     }
@@ -74,7 +78,6 @@ export default class AddACar extends Component {
             .then(res => this.setState({
                 carsList: res.data,
             
-                // auth_id: '',
                 year: '',
                 make: '',
                 model: '',
@@ -95,20 +98,16 @@ export default class AddACar extends Component {
     }
     
     render (){
-        console.log(this.state)
         let mappedCarsList = this.state.carsList.map( (element, index) => {
-            console.log(element)
             return (
                 <div key={element.id}>
                     <button 
                         className='login button'
                         onClick={() => {
-                            let userAuth_Id = {auth_id: this.state.auth_id}
                             console.log(this.state)
-                            axios.delete('/api/car/' + element.id, userAuth_Id)
+                            axios.delete('/api/car/' + element.id)
                             .then(axios.get('/api/cars/'+this.state.auth_id)
-                                .then(res => this.setState({carsList: res.data}) ))
-                                console.log(this.state)}
+                                .then(this.updateCarsArray()))}
                         }>delete</button> 
 
                     <p key={'year'+element.id}>Year: {element.year}</p>

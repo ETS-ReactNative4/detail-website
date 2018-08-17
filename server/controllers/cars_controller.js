@@ -54,10 +54,9 @@ module.exports = {
     delete: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
       const {id} = req.params;
-      const {auth_id} = req.body
-      console.log(req.params, req.body)
+      console.log(req.params)
   
-      dbInstance.cars.delete_car(id, auth_id)
+      dbInstance.cars.delete_car(id)
         .then( (cars) => res.status(200).send(cars) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
