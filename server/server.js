@@ -1,10 +1,11 @@
-const path = require('path');
+// const path = require('path');
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const axios = require('axios');
 const massive = require('massive');
+// const twilio = require('twilio')
 
 const app = express();
 
@@ -51,6 +52,19 @@ app.put( '/api/car/:id/:auth_id', cars_controller.update );
 app.delete( '/api/car/:id', cars_controller.delete );
 // cars_controller
 
+// Twilio
+const accountSid = process.env.TWILIO_ACCOUNT_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
+
+const client = require('twilio')(accountSid, authToken)
+
+client.messages.create({
+    to: process.env.MY_PHONE_NUMBER,
+    from: '+13312143265',
+    body: 'Somebody poisoned the waterhole'
+})
+.then((message) => console.log(message.sid))
+// Twilio
 
 // Auth0
 app.get('/auth/callback', async (req, res) => {
@@ -105,5 +119,5 @@ app.get('/api/logout', (req, res) => {
 // Hosting
 
 app.listen(SERVER_PORT, () => {
-    console.log(`I can throw a pigskin a quarter mile. Port: ${SERVER_PORT}`);
+    console.log(`It's Brittany, b*tch. Port: ${SERVER_PORT}`);
 });

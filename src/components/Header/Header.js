@@ -17,8 +17,8 @@ export default class Header extends Component {
                             <Link to='/' >Home</Link>
                             <Link to='/services' >Services</Link>
                             <Link to='/pricing'>Pricing</Link>
-                            <Link to='/schedule'>Schedule</Link>
-                            <Link to='/cart'>Shopping Cart</Link>
+                            <Link to='/contact'>Contact</Link>
+                            <Link to='/feedback'>Feedback</Link>
                             <Link to='/private'>Account</Link>
                         </div>
                     </HashRouter>

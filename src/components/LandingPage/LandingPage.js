@@ -48,7 +48,7 @@ export default class LandingPage extends Component {
                     <HashRouter>
                         <div className='pictureLinks'>
                             <Link to='/services' ><button>Services</button></Link>
-                            <Link to='/scheduling' ><button>Schedule Now</button></Link>
+                            <Link to='/contact' ><button>Contact</button></Link>
                         </div>
                     </HashRouter>
                 </div>
