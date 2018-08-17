@@ -92,7 +92,8 @@ app.get('/api/user-data', (req, res) => {
 
 app.get('/api/logout', (req, res) => {
     req.session.destroy();
-    res.sendStatus(200)
+    res.redirect('/#/')
+    //redirect
     // res.redirect(LOCAL_HOST_URL)
 })
 // Auth0

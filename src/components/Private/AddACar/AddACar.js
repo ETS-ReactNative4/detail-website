@@ -98,7 +98,7 @@ export default class AddACar extends Component {
     }
     
     render (){
-        let mappedCarsList = this.state.carsList.map( (element, index) => {
+        let mappedCarsList = this.state.carsList.map( (element) => {
             return (
                 <div key={element.id}>
                     <button 

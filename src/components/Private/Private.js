@@ -16,12 +16,6 @@ class Private extends Component {
         })
     }
 
-    logout(){
-        axios.get('/api/logout').then(res => {
-            this.props.history.push('/')
-        })
-    }
-
     render() {
         let {user} = this.props
         let userId = this.props.user.auth_id
@@ -40,7 +34,6 @@ class Private extends Component {
                     ) : <div>
                             <p>Please log in.</p> 
                             <Login /> 
-                            {/* <AddACar /> */}
                         </div>
                 }
             </div>

@@ -33,15 +33,6 @@ export default class LandingPage extends Component {
             // .catch(err => console.log(err));
     }
 
-    // handlePhotoApi2(){
-    //     let IMAGE_SEARCH = 'car'
-    //     let REACT_APP_UNSPLASH_PUBLIC_KEY = process.env.REACT_APP_UNSPLASH_PUBLIC_KEY
-
-    //     axios.get(`https://api.unsplash.com/search/photos/?page=1&per_page=10&query=${IMAGE_SEARCH}&client_id=${REACT_APP_UNSPLASH_PUBLIC_KEY}`)
-    //     .then(photo => console.log(photo.data))
-    //     .catch(err => console.log(err));
-    // }
-
     render (){
         console.log(this.state)
         // let IMAGE_SEARCH = 'car'
