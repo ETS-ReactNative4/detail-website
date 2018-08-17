@@ -45,9 +45,9 @@ app.use(session({
 
 // cars_controller
 app.post( '/api/car', cars_controller.create );
-app.get( '/api/cars', cars_controller.getAll );
+app.get( '/api/cars/:auth_id', cars_controller.getAll );
 app.get( '/api/car/:id', cars_controller.getOne );
-app.put( '/api/car/:id', cars_controller.update );
+app.put( '/api/car/:id/:auth_id', cars_controller.update );
 app.delete( '/api/car/:id', cars_controller.delete );
 // cars_controller
 
@@ -98,9 +98,9 @@ app.get('/api/logout', (req, res) => {
 // Auth0
 
 // Hosting
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+// app.get('*', (req, res)=>{
+//     res.sendFile(path.join(__dirname, '../build/index.html'));
+// });
 // Hosting
 
 app.listen(SERVER_PORT, () => {

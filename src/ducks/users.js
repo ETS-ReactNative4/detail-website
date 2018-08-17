@@ -1,5 +1,6 @@
 const initialState = {
-    user: {}
+    // user: {}
+    user: {id: 2, user_name: "Spencer Ricks", email: "spencer.ricks9@gmail.com", auth_id: "github|36371678", picture: "https://avatars0.githubusercontent.com/u/36371678?v=4"}
 }
 
 const UPDATE_USER_DATA = 'UPDATE_USER_DATA'

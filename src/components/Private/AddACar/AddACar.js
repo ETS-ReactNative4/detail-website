@@ -27,7 +27,8 @@ export default class AddACar extends Component {
     }
 
     componentDidMount(){
-        axios.get('/api/cars')
+        // console.log(this.state.auth_id)
+        axios.get('/api/cars/'+this.state.auth_id)
             .then(res => this.setState({carsList: res.data}) )
     }
 
@@ -69,11 +70,11 @@ export default class AddACar extends Component {
 
         axios.post('/api/car', newCar)
             .then(() => {
-            axios.get('/api/cars')
+            axios.get(`/api/cars/${this.state.auth_id}`)
             .then(res => this.setState({
                 carsList: res.data,
             
-                auth_id: '',
+                // auth_id: '',
                 year: '',
                 make: '',
                 model: '',
@@ -96,19 +97,18 @@ export default class AddACar extends Component {
     render (){
         console.log(this.state)
         let mappedCarsList = this.state.carsList.map( (element, index) => {
+            console.log(element)
             return (
                 <div key={element.id}>
-                    <button
-                        className='login button'
-                        onClick={() => {
-                            axios.put('/api/car/' + element.id)
-                        }}
-                    >edit</button>
                     <button 
                         className='login button'
                         onClick={() => {
-                            axios.delete('/api/car/' + element.id)
-                            .then((res) => this.setState({carsList: res.data}))}
+                            let userAuth_Id = {auth_id: this.state.auth_id}
+                            console.log(this.state)
+                            axios.delete('/api/car/' + element.id, userAuth_Id)
+                            .then(axios.get('/api/cars/'+this.state.auth_id)
+                                .then(res => this.setState({carsList: res.data}) ))
+                                console.log(this.state)}
                         }>delete</button> 
 
                     <p key={'year'+element.id}>Year: {element.year}</p>
@@ -126,7 +126,8 @@ export default class AddACar extends Component {
                                     className='login button'
                                     onClick={() => {
                                         let newPlate = {licenseplate: this.state.licensePlate}
-                                        axios.put('/api/car/' + element.id, newPlate)
+                                        let userAuth_Id = {auth_id: this.state.auth_id}
+                                        axios.put('/api/car/' + element.id + '/' + this.state.auth_id, {newPlate, userAuth_Id})
                                         .then((res) => this.setState({carsList: res.data, licensePlate: ''}))
                                     }}
                                 >Save</button> 

@@ -1,16 +1,3 @@
-// module.exports = {
-//     read: (req, res, next ) => {
-//         const dbInstance = req.app.get('db');
-
-//         dbInstance.get_cars()
-//             .then(cars => {res.status(200).send(cars); })
-//             .catch(err => {
-//                 console.log(err);
-//                 res.status(500).send(err);
-//             });
-//         },
-// }
-
 module.exports = {
     create: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
@@ -38,8 +25,9 @@ module.exports = {
   
     getAll: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
+      const {params} = req;
   
-      dbInstance.cars.get_cars()
+      dbInstance.cars.get_cars([params.auth_id])
         .then( cars => res.status(200).send( cars ) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
@@ -49,12 +37,13 @@ module.exports = {
   
     update: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
-      const {licenseplate} = req.body;
-      const {id} = req.params
-      console.log(req.body)
-      console.log(req.params.id)
+      const {newPlate} = req.body;
+      const {licenseplate} = newPlate
+      const {id, auth_id} = req.params
+      console.log("---req.body---", req.body)
+      console.log("---req.params---", req.params.id, req.params.auth_id)
   
-      dbInstance.cars.update_car([id, licenseplate])
+      dbInstance.cars.update_car([id, licenseplate, auth_id])
         .then( (cars) => res.status(200).send(cars) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
@@ -64,9 +53,11 @@ module.exports = {
   
     delete: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
-      const {params} = req;
+      const {id} = req.params;
+      const {auth_id} = req.body
+      console.log(req.params, req.body)
   
-      dbInstance.cars.delete_car(params.id)
+      dbInstance.cars.delete_car(id, auth_id)
         .then( (cars) => res.status(200).send(cars) )
         .catch( err => {
           res.status(500).send({errorMessage: "----- Something went wrong -----"});
