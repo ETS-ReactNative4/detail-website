@@ -10,6 +10,7 @@ const massive = require('massive');
 const app = express();
 
 const cars_controller = require('./controllers/cars_controller')
+const twilio_controller = require('./controllers/twilio_controller')
 
 const {
     SERVER_PORT,
@@ -53,17 +54,7 @@ app.delete( '/api/car/:id', cars_controller.delete );
 // cars_controller
 
 // Twilio
-const accountSid = process.env.TWILIO_ACCOUNT_SID
-const authToken = process.env.TWILIO_AUTH_TOKEN
-
-const client = require('twilio')(accountSid, authToken)
-
-client.messages.create({
-    to: process.env.MY_PHONE_NUMBER,
-    from: '+13312143265',
-    body: 'Somebody poisoned the waterhole'
-})
-.then((message) => console.log(message.sid))
+app.post( '/api/sms', twilio_controller.message)
 // Twilio
 
 // Auth0
