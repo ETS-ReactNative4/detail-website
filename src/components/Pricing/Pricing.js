@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Switch from 'react-toggle-switch';
+import {HashRouter, Link} from 'react-router-dom';
 
 import './Pricing.css'
 // import '../../../node_modules/react-toggle-switch/dist/css/switch.min.css'
@@ -36,6 +37,9 @@ export default class Pricing extends Component {
                     <div>column 3</div>
                     <div>column 4</div>
                 </div>
+                <HashRouter>
+                    <Link to='/private'> <button>Book Service</button> </Link>
+                </HashRouter>
             </div>
         )
     }

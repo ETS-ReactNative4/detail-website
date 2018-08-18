@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {HashRouter, Link} from 'react-router-dom';
 
 import './Services.css'
 import InteriorExterior from './Interior-Exterior/Interior-Exterior'
@@ -10,16 +11,23 @@ export default class Services extends Component {
         return (
             <div>
                 <h1>Services</h1>
-                <div className='servicesWrapper'>
-                    <div className='intExt'>
-                        <InteriorExterior />
-                    </div>
-                    <div className='int'>
-                        <Interior />
-                    </div>
-                    <div className='ext'>
-                        <Exterior />
-                    </div>
+                <div>
+                    <HashRouter>
+                        <div className='servicesWrapper'>
+                            <div className='intExt'>
+                                <InteriorExterior />
+                                <Link to='/pricing'> <button>See Pricing</button> </Link>
+                            </div>
+                            <div className='int'>
+                                <Interior />
+                                <Link to='/pricing'> <button>See Pricing</button> </Link>
+                            </div>
+                            <div className='ext'>
+                                <Exterior />
+                                <Link to='/pricing'> <button>See Pricing</button> </Link>
+                            </div>
+                        </div>
+                    </HashRouter>
                 </div>
             </div>
         )

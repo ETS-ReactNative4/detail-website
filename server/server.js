@@ -110,5 +110,5 @@ app.get('/api/logout', (req, res) => {
 // Hosting
 
 app.listen(SERVER_PORT, () => {
-    console.log(`It's Brittany, b*tch. Port: ${SERVER_PORT}`);
+    console.log(`It's Brittney, b*tch. Port: ${SERVER_PORT}`);
 });

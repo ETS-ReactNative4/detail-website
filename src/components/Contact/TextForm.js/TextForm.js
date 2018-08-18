@@ -12,9 +12,7 @@ export default class TextForm extends Component {
 
     handleText(){
         axios.post('/api/sms', {textMessage: this.state.message})
-        .then(() => this.setState({
-            message: ''
-        }))
+        .then(res => console.log(res))
     }
 
     handleChange(event) {
@@ -24,14 +22,13 @@ export default class TextForm extends Component {
     }
 
     render(){
-        console.log(this.handleText.message)
         console.log(this.state.message)
         return (
             <div>
                 <textarea 
                 name='message' 
                 onChange={(event) => this.handleChange(event)}
-                placeholder='Type your message here. Leave your name and phone number for someone to get back to you'></textarea>
+                placeholder='Type your message here. Leave your name and number so we can get back to you'></textarea>
 
                 <button onClick={() => this.handleText()} >Send Text</button>
             </div>
