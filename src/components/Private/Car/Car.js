@@ -7,63 +7,60 @@ export default class CarsList extends Component {
     }
 
     render(){
-        let mappedCarsList = this.state.carsList.map( (element, index) => {
-            return (
-                <div key={element.id}>
-                    <button
-                        className='login button'
-                        onClick={() => {
-                            axios.put('/api/car/' + element.id)
-                        }}
-                    >edit</button>
-                    <button 
-                        className='login button'
-                        onClick={() => {
-                            axios.delete('/api/car/' + element.id)
-                            .then((res) => this.setState({carsList: res.data}))}
-                        }>delete</button> 
+        return (
+            <div>
+                <div>
+                    <h3>Add A Car</h3>
+                    <form>
+                        <input  
+                            placeholder="Year" 
+                            value={this.state.year} 
+                            onChange={(e) => this.yearHandler(e.target.value)} 
+                        />
+                        <input 
+                            placeholder="Make" 
+                            value={this.state.make}
+                            onChange={(e) => this.makeHandler(e.target.value)} 
+                        />
+                        <input 
+                            placeholder="Model" 
+                            value={this.state.model}
+                            onChange={(e) => this.modelHandler(e.target.value)} 
+                        />
+                        Rows of Seats: <select 
+                            value={this.state.rowsOfSeats}
+                            onChange={(e) => this.rowsOfSeatsHandler(e.target.value)} 
+                            >
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
+                        <input 
+                            placeholder="License Plate #" 
+                            value={this.state.licensePlate}
+                            onChange={(e) => this.licensePlateHandler(e.target.value)} 
+                        />
 
-                    <p key={'year'+element.id}>Year: {element.year}</p>
-                    <p key={'make'+element.id}>Make: {element.make}</p>
-                    <p key={'model'+element.id}>Model: {element.model}</p>
-                    <div key={'licplate'+element.id}> 
-                        License Plate #: {element.licenseplate} 
-                        {this.state.editPlate === true ? 
-                            <p> 
-                                <input 
-                                    placeholder={element.licenseplate}
-                                    onChange={(e) => this.handleSavePlate(e.target.value)}
-                                    ></input> 
-                                <button
-                                    onClick={() => {
-                                        let newPlate = {licenseplate: this.state.licensePlate}
-                                        axios.put('/api/car/' + element.id, newPlate)
-                                        .then((res) => this.setState({carsList: res.data, licenseplate: ''}))
-                                    }}
-                                >Save</button> 
-                            </p> : ''} 
-                            <button 
-                                className='login button' 
-                                key={'licplate'+element.id}
-                                onClick={this.handleEditPlate} 
-                                >{this.state.editPlate ? 'Save' : 'Update'}
-                            </button>
-                            
-                    </div>
-                    <p>
-                        {}
-                    </p>
-                    <p key={'rows'+element.id}>Rows of Seats: {element.rowsofseats}</p>
-                    <br></br>
+                        <button 
+                            className='login button'
+                            onClick={this.handleAddCar                            
+                            }>Add</button>
+                    </form>
                 </div>
-            )
-        })
-        return(
-        <div>
-            <br></br>
-            <br></br>
-            {mappedCarsList}
-        </div>
-)
+                <div>
+                    <br></br>
+                    <br></br>
+                    {mappedCarsList}
+                </div>
+            </div>
+        )
     }
 }
