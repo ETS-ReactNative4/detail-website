@@ -52,7 +52,7 @@ export default class LandingPage extends Component {
                         </div>
                     </HashRouter>
                 </div>
-                <div>
+                <div className='cover'>
                     {/* <img className='landingPageImage' src={this.handlePhotoApi2} alt="" /> */}
                     <img className='landingPageImage' src={this.state.backgroundImage} alt="" />
                 </div>

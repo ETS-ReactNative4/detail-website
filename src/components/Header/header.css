@@ -1,25 +1,57 @@
 @import url('https://fonts.googleapis.com/css?family=Racing+Sans+One');
 
-.HeaderWrapper {
-    background-color: aqua;
+nav {
+    background-color: grey;
+    width: 100%;
     height: 50px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    color: black;
 }
 
-.navLinks {
+ul {
     display: flex;
-    width: 50vw;
+    width: 20vw;
     justify-content: space-around;
+    /* align-items: center; */
     background-color: burlywood;
+    height: 50px;
+
+    width: 20vw;
+    height: 25px;
+    overflow: hidden;
+    transition: .5s;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
 }
 
 .logo {
     font-family: 'Racing Sans One';
     font-size: 24pt;
+    height: 100%
 }
 
-img {
-    height: 100%;
+.logoImage {
+    width: 130px;
+}
+
+.hamburger {
+    width: 25px;
+    height: 25px;
+}
+
+@media (min-width: 500px) {
+    ul {
+        width: 50vw;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    ul:hover {
+        height: 25px;
+    }
+    .hamburger {
+        display: none;
+    }
 }

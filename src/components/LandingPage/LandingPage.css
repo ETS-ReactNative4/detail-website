@@ -1,5 +1,6 @@
 .landingPageImage {
-    height: 100vh;
+    /* height: 100vh; */
+    width: 100vw;
     opacity: 0.4;
     filter: alpha(opacity=50);
 }
