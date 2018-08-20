@@ -23,7 +23,7 @@ export default class LandingPage extends Component {
 
     async handlePhotoApi(){
         let IMAGE_SEARCH = 'car'
-        let REACT_APP_UNSPLASH_PUBLIC_KEY = process.env.REACT_APP_UNSPLASH_PUBLIC_KEY
+        let {REACT_APP_UNSPLASH_PUBLIC_KEY} = process.env
         let randomizer = function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
           }
