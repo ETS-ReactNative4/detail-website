@@ -119,7 +119,7 @@ export default class Pricing extends Component {
                 </div>
                 <div><HashRouter><Link to='/private'> <button id='bookingButton'>Book Service</button> </Link></HashRouter></div>
                 <div className='disclaimer'>
-                    <p>**Prices are subject to increase based on time spent cleaning. This happens to approx 1% of the cars we detail.</p>
+                    <p>**Prices are subject to increase based on time spent cleaning- approx 1% of the cars we detail.</p>
                 </div>
             </div>
         )

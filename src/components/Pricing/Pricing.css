@@ -97,6 +97,7 @@
         font-family: 'Roboto';
         font-size: 70%;
         color: rgb(206, 205, 205);
-        transition: 0.5s;        
+        transition: 0.5s;   
+        width: 70vw;     
     }
 }

@@ -5,6 +5,9 @@ import moment from 'moment';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
+import '../../../reset.css'
+import '../Contact.css'
+
 // import DatePickerComp from '../DatePickerComp/DatePickerComp'
 
 export default class TextForm extends Component {
@@ -59,10 +62,10 @@ export default class TextForm extends Component {
     render(){
         console.log(this.state)
         return (
-            <div>
+            <div className='TextForm'>
                 <br/>
                     <DatePicker
-                    // placeholderText='desired service date'
+                    className='DatePicker'
                     selected={this.state.startDate}
                     onChange={this.handleDateChange}
                     />
@@ -76,7 +79,7 @@ export default class TextForm extends Component {
                 
                 </textarea>
 
-                <button onClick={() => this.handleText()} >Send Text</button>
+                <button className='MessageButton' onClick={() => this.handleText()} >Send Message</button>
             </div>
         )
     }

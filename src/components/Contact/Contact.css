@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.ContactWrapper {
+    height: 100vh;
+    background-image: url('../../images/AudiR8.jpg');
+    background-size: cover;
+    font-family: 'Roboto';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .PhoneNumber {
+    background-color: green;
+} */
+
+.TextForm, .PhoneNumber {
+    color: darkgray;
+    width: 33vw;
+    background-color: black;
+    background: rgba(0,0,0,0.4);
+    transition: .5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 100px;
+}
+
+.PhoneNumber {
+    padding: 20px 100px;
+}
+
+/* .TextForm:hover, .PhoneNumber:hover {
+    transition: .5s;
+    background: rgba(0,0,0,0.65);
+} */
+
+input, .DatePicker, textarea {
+    width: 250px;
+    padding: 6px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+    background-color: black;
+    color: darkgray;
+    border: none;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.MessageButton {
+    padding: 10px;
+    margin: 4px 0;
+    margin-top: 30px;
+    width: 130px;
+    font-family: 'Fjalla One';
+    font-size: 15px;
+    background-color: darkgray;
+    color: white;
+    border: none;
+    transition: 0.5s;
+}
+
+.Contact {
+    font-size: 200%;
+    margin-bottom: 25px;
+    color: black;
+}
+
+.MessageButton:hover {
+    background-color: black;
+}
+
+@media (max-width: 800px) {
+    .TextForm, .PhoneNumber {
+        width: 90vw;
+    }
+}
