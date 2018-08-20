@@ -3,6 +3,9 @@ import axios from 'axios';
 import TextForm from '../../Contact/TextForm/TextForm'
 // import cars_controller from '../../../../server/controllers/cars_controller'
 
+import '../../../reset.css';
+import '../Private.css'
+
 export default class AddACar extends Component {
     constructor(props){
         super(props)
@@ -117,16 +120,19 @@ export default class AddACar extends Component {
     render (){
         let mappedCarsList = this.state.carsList.map( (element) => {
             return (
-                <div key={element.id}>
-                    <button 
-                        className='login button'
-                        onClick={() => {
-                            console.log(this.state)
-                            axios.delete('/api/car/' + element.id)
-                            .then(axios.get('/api/cars/'+this.state.auth_id)
-                                .then(this.updateCarsArray()))}
-                        }>delete</button> 
-
+                <div className='CarCard' key={element.id}>
+                    <div className='DeleteButton'>
+                        <button 
+                            className='UpdateButton'
+                            onClick={() => {
+                                console.log(this.state)
+                                axios.delete('/api/car/' + element.id)
+                                .then(axios.get('/api/cars/'+this.state.auth_id)
+                                    .then(this.updateCarsArray()))}
+                            }>Delete
+                        </button> 
+                    </div>
+                    <div className='CarWords'>
                     <p key={'year'+element.id}>Year: {element.year}</p>
                     <p key={'make'+element.id}>Make: {element.make}</p>
                     <p key={'model'+element.id}>Model: {element.model}</p>
@@ -149,7 +155,7 @@ export default class AddACar extends Component {
                                 >Save</button> 
                             </p> : ''} 
                             <button 
-                                className='login button' 
+                                className='UpdateButton' 
                                 key={'licplate'+element.id}
                                 onClick={this.handleEditPlate} 
                                 >{this.state.editPlate ? 'Finished Updating' : 'Update'}
@@ -163,21 +169,22 @@ export default class AddACar extends Component {
                     
                     {/* Book Service Button */}
                     {this.state.bookService === true ?
-                        <TextForm />
+                        <TextForm className='TextForm' />
                         : ''
                     }
                     <button
+                        className='BookServiceButton'
                         onClick={this.handleBookService}
                         >{this.state.bookService ? 'Finished Booking' : 'Book Service'}</button>
-
+                    </div>
                     <br></br>
                 </div>
             )
         })
         return (
             <div>
-                <div>
-                    <h3>Add A Car</h3>
+                <div className='AddACar'>
+                    <h3 className='AddACarText'>Add A Car</h3>
                     <form>
                         <input  
                             placeholder="Year" 
@@ -195,6 +202,7 @@ export default class AddACar extends Component {
                             onChange={(e) => this.modelHandler(e.target.value)} 
                         />
                         Rows of Seats: <select 
+                            className='RowsOfSeats'
                             value={this.state.rowsOfSeats}
                             onChange={(e) => this.rowsOfSeatsHandler(e.target.value)} 
                             >

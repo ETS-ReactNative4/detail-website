@@ -6,7 +6,8 @@ import Login from '../Login/Login'
 import Logout from '../Logout/Logout'
 import AddACar from './AddACar/AddACar'
 
-import './Private.css'
+import '../../reset.css';
+import './Private.css';
 
 class Private extends Component {
 
@@ -20,20 +21,25 @@ class Private extends Component {
         let {user} = this.props
         let userId = this.props.user.auth_id
         return (
-            <div>
-                <h1>Account Information</h1>
+            <div className='LoginPage'>
                 {
                     user.user_name ? (
-                        <div className='userInfo'>
-                            <img src={user.picture} alt="" />
-                            <p>{user.user_name}</p>
-                            <p>{user.email}</p>
-                            <Logout />
-                            <AddACar userId={userId}/>
+                        <div className='userWrapper'>
+                            <div className='userInfo'>
+                            {/* <h1>Account Information</h1> */}
+                                <img className='userPhoto' src={user.picture} alt="" />
+                                <p className='userName'>{user.user_name}</p>
+                                <p className='userEmail'>{user.email}</p>
+                                    <Logout />
+                            </div>
+                                <div>
+                                    <AddACar userId={userId}/>
+                                </div>
                         </div>
-                    ) : <div>
-                            <p>Please log in.</p> 
-                            <Login /> 
+                    ) : <div className='PleaseLogin'>
+                            {/* <h1>Account Information</h1> */}
+                            <p className='TextPleaseLogin'>Please login</p> 
+                            <Login className='LoginButton' /> 
                         </div>
                 }
             </div>

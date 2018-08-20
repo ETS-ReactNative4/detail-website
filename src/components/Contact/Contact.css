@@ -37,7 +37,7 @@
     background: rgba(0,0,0,0.65);
 } */
 
-input, .DatePicker, textarea {
+input, .DatePicker, textarea, select {
     width: 250px;
     padding: 6px 10px;
     margin: 4px 0;
@@ -46,6 +46,7 @@ input, .DatePicker, textarea {
     background-color: black;
     color: darkgray;
     border: none;
+    font-size: 75%;
 }
 
 textarea {

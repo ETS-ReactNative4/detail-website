@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.LoginPage {
+    background-image: url('../../images/Bentley.jpg');
+    background-size: cover;
+    height: 125vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PleaseLogin {
+    background-color: black;
+    background: rgba(0,0,0,0.5);
+    transition: .5s;
+    width: 33vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.TextPleaseLogin {
+    margin-top: 10vh;
+    font-family: 'Roboto';
+    font-size: 160%;
+}
+
+.userWrapper {
+    background-color: white;
+    background: rgb(255, 255, 255, 0.5);
+    transition: .5s;
+    width: 100vw;
+    height: 125vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.LoginButton {
+    padding: 10px;
+    margin: 4px 0;
+    margin-top: 30px;
+    width: 130px;
+    font-family: 'Fjalla One';
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    transition: 0.5s;
+}
+
+.LoginButton:hover {
+    background-color: darkgray;
+}
+
+.userInfo {
+    margin-top: 25px;
+    margin-left: 25px;
+    font-size: 120%;
+    font-family: 'Roboto';
+}
+
+.AddACar {
+    background-color: black;
+    background: rgb(0, 0, 0, 0.5);
+    transition: .5s;
+    width: 45vw;
+    font-family: 'Roboto';
+    margin-top: 25px;
+}
+
+.AddACarText {
+    font-size: 130%;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+}
+
+.CarCard {
+    background-color: black;
+    background: rgb(0, 0, 0, 0.5);
+    transition: .5s;
+    /* padding: 25px; */
+    font-family: 'Roboto'
+}
+
+.CarWords {
+    /* background-color: black;
+    background: rgb(0, 0, 0, 0.5); */
+    transition: .5s;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.UpdateButton, .BookServiceButton {
+    padding: 5px 8px;
+    margin: 4px 0;
+    margin-top: 30px;
+    width: auto;
+    font-family: 'Fjalla One';
+    font-size: 13px;
+    background-color: black;
+    color: white;
+    border: none;
+    transition: 0.5s;
+}
+
+.UpdateButton:hover, .BookServiceButton:hover {
+    background-color: darkgray;
+}
+
+.TextForm {
+    display: flex;
+    justify-content: center;
+}
