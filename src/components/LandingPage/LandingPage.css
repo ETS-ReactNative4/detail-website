@@ -10,6 +10,7 @@
     width: 100vw;
     opacity: 0.4;
     filter: alpha(opacity=50);
+    size: cover;
 }
 
 .pictureLinks {
@@ -44,4 +45,21 @@
 
 #LPButton:hover {
     background-color: darkgray;
+}
+
+@media (max-width: 800px) {
+    .pictureLinks {
+        top: 25%;
+    }
+    #LPButton {
+        padding: 10px;
+        width: 100px;
+    }
+    .wrapper {
+        height: 100vh;
+    }
+    .landingPageImage {
+        width: auto;
+        height: 100vh;
+    }
 }
