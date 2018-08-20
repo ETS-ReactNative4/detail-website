@@ -1,23 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
 .servicesWrapper {
-    height: 80vh;
-    background-color: brown;
+    height: 100vh;
+    background-image: url('../../images/porsche.jpg');
+    background-size: cover;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.intExt {
+.intExt, .int, .ext {
     width: 30vw;
-    background-color: lightblue;
+    background-color: black;
+    background: rgba(0,0,0,0.5);
+    font-family: 'Roboto';
+    line-height: 1.2;
+    font-size: 200%;
+    color: rgb(206, 205, 205);
     height: 50vh;
 }
-.int {
-    width: 30vw;
-    background-color: lightcoral;
-    height: 50vh;
+
+button {
+    padding: 10px;
+    width: 100px;
+    font-family: 'Fjalla One';
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    border: none;
 }
-.ext {
-    width: 30vw;
-    background-color: lightgreen;
-    height: 50vh;
+
+button:hover {
+    background-color: darkgray;
+}
+
+@media (max-width: 800px) {
+    .servicesWrapper {
+        height: 100vh;
+        background-image: url('../../images/lambo.jpg');
+        background-size: cover;
+    }
 }

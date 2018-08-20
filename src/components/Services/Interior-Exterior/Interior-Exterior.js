@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {HashRouter, Link} from 'react-router-dom';
 
+import '../Services.css'
+
 export default class InteriorExterior extends Component {
     render(){
         return (
