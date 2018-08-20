@@ -37,7 +37,7 @@ button:hover {
     background-color: darkgray;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 500px) {
     .servicesWrapper {
         height: 100vh;
         background-image: url('../../images/lambo.jpg');
@@ -50,6 +50,23 @@ button:hover {
     .intExt, .int, .ext {
         width: 90vw;
         font-size: 90%;
+        height: 30vh;
+    }
+}
+
+@media (max-width: 800px) {
+    .servicesWrapper {
+        height: 100vh;
+        background-image: url('../../images/lambo.jpg');
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .intExt, .int, .ext {
+        width: 90vw;
+        font-size: 130%;
         height: 30vh;
     }
 }
