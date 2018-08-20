@@ -23,7 +23,7 @@ export default class Header extends Component {
         const services = <HashRouter><Link to='/services' >Services</Link></HashRouter>
         const pricing = <HashRouter><Link to='/pricing'>Pricing</Link></HashRouter>
         const contact = <HashRouter><Link to='/contact'>Contact</Link></HashRouter>
-        const feedback = <HashRouter><Link to='/feedback'>Feedback</Link></HashRouter>
+        // const feedback = <HashRouter><Link to='/feedback'>Feedback</Link></HashRouter>
         const account = <HashRouter><Link to='/private'>Account</Link></HashRouter>
 
         return(
@@ -36,7 +36,7 @@ export default class Header extends Component {
                             <li>{services}</li>
                             <li>{pricing}</li>
                             <li>{contact}</li>
-                            <li>{feedback}</li>
+                            {/* <li>{feedback}</li> */}
                             <li>{account}</li>
                         </ul>
                     <Login />

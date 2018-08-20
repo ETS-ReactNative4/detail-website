@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import TextForm from '../../Contact/TextForm/TextForm'
 // import cars_controller from '../../../../server/controllers/cars_controller'
 
 export default class AddACar extends Component {
@@ -15,7 +16,8 @@ export default class AddACar extends Component {
             rowsOfSeats: 0,
             licensePlate: '',
             editPlate: false,
-            addACar: false
+            addACar: false,
+            bookService: false
         }
         this.auth_idHandler = this.auth_idHandler.bind(this);
         this.yearHandler = this.yearHandler.bind(this);
@@ -25,6 +27,8 @@ export default class AddACar extends Component {
         this.licensePlateHandler = this.licensePlateHandler.bind(this);
         this.handleAddCar = this.handleAddCar.bind(this);
         this.handleEditPlate = this.handleEditPlate.bind(this);
+        this.handleAddACarButton = this.handleAddACarButton.bind(this);
+        this.handleBookService = this.handleBookService.bind(this);
         this.updateCarsArray = this.updateCarsArray.bind(this);
     }
 
@@ -100,6 +104,12 @@ export default class AddACar extends Component {
         }))
     }
 
+    handleBookService (){
+        this.setState(prevState => ({
+            bookService: !prevState.bookService
+        }))
+    }
+
     handleSavePlate (input){
         this.setState({licensePlate: input})
     }
@@ -150,7 +160,16 @@ export default class AddACar extends Component {
                         {}
                     </p>
                     <p key={'rows'+element.id}>Rows of Seats: {element.rowsofseats}</p>
-                    <h1>book service</h1>
+                    
+                    {/* Book Service Button */}
+                    {this.state.bookService === true ?
+                        <TextForm />
+                        : ''
+                    }
+                    <button
+                        onClick={this.handleBookService}
+                        >{this.state.bookService ? 'Finished Booking' : 'Book Service'}</button>
+
                     <br></br>
                 </div>
             )

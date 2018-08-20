@@ -13,7 +13,10 @@ export default class TextForm extends Component {
 
         this.state = {
             message: '',
-            startDate: moment()
+            startDate: moment(),
+            name: '',
+            phone: '',
+            yearMakeModel:''
         }
         this.handleDateChange = this.handleDateChange.bind(this)
     }
@@ -23,31 +26,53 @@ export default class TextForm extends Component {
         .then(res => console.log(res))
     }
 
+    handleDateChange(date) {
+        this.setState({
+            startDate: date
+        });
+    }
+
+    handleNameInput(input){
+        this.setState({
+            name: input
+        })
+    }
+    
+    handlePhoneInput(input){
+        this.setState({
+            phone: input
+        })
+    }
+    
+    handleYearMakeModel(input){
+        this.setState({
+            yearMakeModel: input
+        })
+    }
+    
     handleChange(event) {
         this.setState({
-            [event.target.name]: `Desired Date: ${this.state.startDate} ${event.target.value}`
+            message: `Desired Date: ${this.state.startDate} Name: ${this.state.name} Phone: ${this.state.phone} Car: ${this.state.yearMakeModel} Message: ${event.target.value}`
         })
     }
 
-    handleDateChange(date) {
-        this.setState({
-          startDate: date
-        });
-      }
-
     render(){
-        console.log(this.state.message)
+        console.log(this.state)
         return (
             <div>
+                <br/>
                     <DatePicker
                     // placeholderText='desired service date'
                     selected={this.state.startDate}
-                    onChange={this.handleChange}/>
-
+                    onChange={this.handleDateChange}
+                    />
+                <input placeholder='name' onChange={(e) => this.handleNameInput(e.target.value)} ></input>
+                <input placeholder='phone' onChange={(e) => this.handlePhoneInput(e.target.value)} ></input>
+                <input placeholder='year, make, model' onChange={(e) => this.handleYearMakeModel(e.target.value)} ></input>
                 <textarea 
                 name='message' 
                 onChange={(event) => this.handleChange(event)}
-                placeholder='Type your message here. Leave your name and number so we can get back to you'>
+                placeholder='Type your message here'>
                 
                 </textarea>
 
