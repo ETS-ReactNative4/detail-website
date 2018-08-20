@@ -6,7 +6,7 @@ export default class Interior extends Component {
         return (
             <div>
                 <h3>Interior Only Services</h3>
-                <HashRouter><Link to='/pricing'> <button>See Pricing</button> </Link></HashRouter>
+                <HashRouter><Link to='/pricing'> <button className='servicesButton'>See Pricing</button> </Link></HashRouter>
                 <br></br>
                 <div>
                     <p>Engine Bay</p>

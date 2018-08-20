@@ -8,7 +8,7 @@ export default class InteriorExterior extends Component {
         return (
             <div>
                 <h3>Interior/Exterior Services</h3>
-                <HashRouter><Link to='/pricing'> <button>See Pricing</button> </Link></HashRouter>
+                <HashRouter><Link to='/pricing'> <button className='servicesButton'>See Pricing</button> </Link></HashRouter>
                 <br></br>
                 <div>
                     <p>Engine Bay</p>

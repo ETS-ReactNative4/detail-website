@@ -26,32 +26,35 @@ export default class Pricing extends Component {
         console.log(this.state)
         return (
             <div className='pricingWrapper'>
-                <h1>Pricing</h1>
+                <br></br>
+                <br></br>
+                <p className='title'>Pricing</p>
+                <br></br>
+                <br></br>
                 <div>
                     <Switch onClick={this.toggleSwitch} on={this.state.switched}/>
                     {this.state.switched ? 
                         <div>
                             <p>Toggle for one-time pricing</p>
-                            <p>We detail your car every other month!</p>
+                            <br></br>
+                            <p className='subStatement'>We detail your car every other month!</p>
                         </div> 
                         : 
                         <p>Toggle for subscription pricing</p>}
-                    <br></br>
-                    <br></br>
-                    <p>Prices are subject to increase based on time spent cleaning- in other words, if your car is SUPER dirty. This is approx 5% of the cars we detail.</p>
                 </div>
+                {/* <p className='title'>Pricing</p> */}
                 <div className='pricingContainer'>
-                    <div>
-                        <p>Rows of Seats</p>
+                    <div className='rows'>
+                        <p>Rows</p>
                         <br></br>
                         <br></br>
                         <p>1</p>
                         <p>2</p>
                         <p>3</p>
-                        <p>Per Additional Row</p>
+                        <p>Per Add'l Row</p>
                     </div>
     {/* Interior/Exterior */}
-                    <div>
+                    <div className='intExt'>
                         <p>Interior/Exterior</p>
                         <br></br>
                         <br></br>
@@ -72,7 +75,7 @@ export default class Pricing extends Component {
                         }
                     </div>
     {/* Interior Only */}
-                    <div>
+                    <div className='int'>
                     <p>Interior Only</p>
                         <br></br>
                         <br></br>
@@ -93,7 +96,7 @@ export default class Pricing extends Component {
                         }
                     </div>
     {/* Exterior Only */}
-                    <div>
+                    <div className='ext'>
                     <p>Exterior Only</p>
                         <br></br>
                         <br></br>
@@ -114,9 +117,10 @@ export default class Pricing extends Component {
                         }
                     </div>
                 </div>
-                <HashRouter>
-                    <Link to='/private'> <button>Book Service</button> </Link>
-                </HashRouter>
+                <div><HashRouter><Link to='/private'> <button id='bookingButton'>Book Service</button> </Link></HashRouter></div>
+                <div className='disclaimer'>
+                    <p>**Prices are subject to increase based on time spent cleaning. This happens to approx 1% of the cars we detail.</p>
+                </div>
             </div>
         )
     }

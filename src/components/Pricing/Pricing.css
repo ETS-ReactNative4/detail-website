@@ -1,22 +1,56 @@
 /* @import "node_modules/react-toggle-switch/dist/css/switch.min.css"; */
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
 
 .pricingWrapper {
-    height: 80vh;
-    background-color: azure;
+    height: 100vh;
+    background-image: url('../../images/BmwNight.jpg');
+    background-size: cover;
+    color: rgb(206, 205, 205);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Roboto';
+}
+
+.title {
+    font-size: 130%;
+}
+
+.subStatement {
+    font-family: 'Gloria Hallelujah'
 }
 
 .pricingContainer {
-    background-color: blanchedalmond;
+    /* background-color: blanchedalmond; */
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    /* justify-content: space-evenly; */
     padding: 5vh 0vh;
     height: 30vh;
-    width: 75vw;
-    margin-left: 12.5vw;
+    width: 90vw;
+    /* margin-left: 12.5vw; */
 }
 
-/* ----------------------------- */
+#bookingButton {
+    margin-top: 200px;
+    padding: 10px;
+    width: 100px;
+    font-family: 'Fjalla One';
+    font-size: 15px;
+    background-color: rgb(124, 124, 124);
+    color: white;
+    border: none;
+    transition: 0.5s;
+}
 
+#bookingButton:hover {
+    background-color: black;
+}
+
+/* -------------Toggle Switch---------------- */
 .switch {
     border:1px solid #ccc;
     width:50px;
@@ -49,5 +83,20 @@
 .switch.disabled {
     cursor:not-allowed
 }
+/* -------------Toggle Switch---------------- */
 
-/* ----------------------------- */
+
+@media (max-width: 500px) {
+    .pricingContainer {
+        width: 100vw;
+    }
+
+    .disclaimer {
+        background-color: black;
+        background: rgba(0,0,0,0.5);
+        font-family: 'Roboto';
+        font-size: 70%;
+        color: rgb(206, 205, 205);
+        transition: 0.5s;        
+    }
+}
