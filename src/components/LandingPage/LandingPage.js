@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import './LandingPage.css'
 // import powerWasher from '../../images/foam-cannon.jpg';
-require('dotenv').config();
+// require('dotenv').config();
 
 export default class LandingPage extends Component {
     constructor(){
