@@ -14,7 +14,8 @@ export default class AddACar extends Component {
             model: '',
             rowsOfSeats: 0,
             licensePlate: '',
-            editPlate: false
+            editPlate: false,
+            addACar: false
         }
         this.auth_idHandler = this.auth_idHandler.bind(this);
         this.yearHandler = this.yearHandler.bind(this);
@@ -93,6 +94,12 @@ export default class AddACar extends Component {
         }))
     }
 
+    handleAddACarButton (){
+        this.setState(prevState => ({
+            addACar: !prevState.addACar
+        }))
+    }
+
     handleSavePlate (input){
         this.setState({licensePlate: input})
     }
@@ -143,6 +150,7 @@ export default class AddACar extends Component {
                         {}
                     </p>
                     <p key={'rows'+element.id}>Rows of Seats: {element.rowsofseats}</p>
+                    <h1>book service</h1>
                     <br></br>
                 </div>
             )
