@@ -42,5 +42,14 @@ button:hover {
         height: 100vh;
         background-image: url('../../images/lambo.jpg');
         background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .intExt, .int, .ext {
+        width: 90vw;
+        font-size: 90%;
+        height: 30vh;
     }
 }
