@@ -146,9 +146,7 @@ form {
         background-image: url('../../images/BugVertical.jpg');
         height: 150vh;
     }
-    /* .userWrapper {
-        background-color: white;
-        background: rgb(255, 255, 255, 0.5);
-        transition: .5s;    
-    } */
+    .userWrapper {
+        height: 150vh;   
+    }
 }
