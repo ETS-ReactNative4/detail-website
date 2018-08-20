@@ -54,7 +54,7 @@ button:hover {
     }
 }
 
-@media (max-width: 800px) {
+@media (min-width: 750px) and (max-width: 1200px) {
     .servicesWrapper {
         height: 100vh;
         background-image: url('../../images/lambo.jpg');
