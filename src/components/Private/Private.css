@@ -6,7 +6,7 @@
     height: 125vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .PleaseLogin {
@@ -18,6 +18,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20vh;
 }
 
 .TextPleaseLogin {
@@ -58,6 +59,10 @@
     margin-left: 25px;
     font-size: 120%;
     font-family: 'Roboto';
+}
+
+.userPhoto {
+    height: 40vh;
 }
 
 .AddACar {
@@ -120,4 +125,30 @@ form {
 .TextForm {
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 800px) {
+    .PleaseLogin {
+        width: 85vw;
+    }
+    .userWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .userPhoto {
+        height: 15vh;
+    }
+    .AddACar {
+        width: 80vw;
+    }
+    .LoginPage {
+        background-image: url('../../images/BugVertical.jpg');
+        height: 150vh;
+    }
+    /* .userWrapper {
+        background-color: white;
+        background: rgb(255, 255, 255, 0.5);
+        transition: .5s;    
+    } */
 }
