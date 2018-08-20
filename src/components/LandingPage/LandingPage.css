@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+.wrapper {
+    background-color: darkgray;
+    height: auto;
+}
+
 .landingPageImage {
     /* height: 100vh; */
     width: 100vw;
@@ -7,5 +14,34 @@
 
 .pictureLinks {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    width: 75vw;
+
+
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    /* background-color: #555; */
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#LPButton {
+    padding: 20px;
+    width: 200px;
+    font-family: 'Fjalla One';
+    font-size: 100%;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+#LPButton:hover {
+    background-color: darkgray;
 }

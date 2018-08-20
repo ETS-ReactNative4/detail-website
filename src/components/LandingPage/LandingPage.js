@@ -43,18 +43,18 @@ export default class LandingPage extends Component {
         // console.log(photoCall)
         
         return(
-            <div>
-                <div>
-                    <HashRouter>
-                        <div className='pictureLinks'>
-                            <Link to='/services' ><button>Services</button></Link>
-                            <Link to='/contact' ><button>Contact</button></Link>
-                        </div>
-                    </HashRouter>
-                </div>
+            <div className='wrapper'>
                 <div className='cover'>
                     {/* <img className='landingPageImage' src={this.handlePhotoApi2} alt="" /> */}
                     <img className='landingPageImage' src={this.state.backgroundImage} alt="" />
+                </div>
+                <div>
+                    <HashRouter>
+                        <div className='pictureLinks'>
+                            <Link to='/services' ><button id='LPButton'>Services</button></Link>
+                            <Link to='/contact' ><button id='LPButton'>Contact</button></Link>
+                        </div>
+                    </HashRouter>
                 </div>
             </div>
         )
