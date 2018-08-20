@@ -1,5 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Racing+Sans+One');
 
+header {
+    display: flex;
+    align-items: center;
+    background-color: gray;
+}
+
+#logoImage {
+    float: left;
+    width: 130px;
+}
+
+.companyName {
+    display: flex;
+    align-items: center;
+    float: left;
+    font-family: 'Racing Sans One';
+    font-size: 24pt;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+}
+
 nav {
     background-color: grey;
     width: 100%;
@@ -13,28 +35,33 @@ nav {
 ul {
     display: flex;
     width: 20vw;
-    justify-content: space-around;
-    /* align-items: center; */
-    background-color: burlywood;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: burlywood; */
     height: 50px;
 
-    width: 20vw;
-    height: 25px;
+    /* height: 25px; */
     overflow: hidden;
     transition: .5s;
+}
+
+li {
     display: flex;
-    flex-direction: column;
-    margin: 25px;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    height: 50px;
 }
 
-.logo {
+a {
     font-family: 'Racing Sans One';
-    font-size: 24pt;
-    height: 100%
-}
-
-.logoImage {
-    width: 130px;
+    font-size: 125%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    color: black;
 }
 
 .hamburger {
@@ -49,7 +76,15 @@ ul {
         justify-content: space-around;
     }
     ul:hover {
-        height: 25px;
+        height: 50px;
+    }
+    li:hover {
+        background-color: darkgray;
+        transition: .5s;
+    }
+    a:hover {
+        color: white;
+        transition: .5s;
     }
     .hamburger {
         display: none;
