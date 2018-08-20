@@ -8,9 +8,11 @@
 .pricingContainer {
     background-color: blanchedalmond;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 5vh 0vh;
-    height: 50vh;
+    height: 30vh;
+    width: 75vw;
+    margin-left: 12.5vw;
 }
 
 /* ----------------------------- */
