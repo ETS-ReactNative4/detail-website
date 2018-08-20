@@ -69,7 +69,7 @@ a {
     height: 25px;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 800px) {
     ul {
         width: 50vw;
         flex-direction: row;
@@ -87,6 +87,18 @@ a {
         transition: .5s;
     }
     .hamburger {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    li {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    div.companyName {
         display: none;
     }
 }
