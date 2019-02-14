@@ -2,23 +2,28 @@ import React, {Component} from 'react';
 import {HashRouter, Link} from 'react-router-dom';
 // import Login from '../Login/Login';
 
-import '../../reset.css'
-import '../../index.css'
-import './header.css'
+// import '../../reset.css'
+// import '../../index.css'
+// import './header.css'
+import NavDrawer from '../NavDrawer/NavDrawer.js'
 
 export default class Header extends Component {
     render(){
         const companyName = <HashRouter><Link to='/' ><div className='companyName'>RockyMountainDetail</div></Link></HashRouter>
+        
         const home =
-        <HashRouter><Link to='/' >
-            <a>
-                <img 
-                    id='logoImage' 
-                    alt='mountains' 
-                    src={require('../../images/MountainArt.png')}>
-                </img>
-            </a>
-        </Link></HashRouter>
+        <HashRouter>
+            <Link to='/' >
+                <a>
+                    <img 
+                        id='logoImage' 
+                        alt='mountains' 
+                        src={require('../../images/MountainArt.png')}>
+                    </img>
+                </a>
+            </Link>
+        </HashRouter>
+
         const services = <HashRouter><Link to='/services' >Services</Link></HashRouter>
         const pricing = <HashRouter><Link to='/pricing'>Pricing</Link></HashRouter>
         const contact = <HashRouter><Link to='/contact'>Contact</Link></HashRouter>
@@ -37,7 +42,8 @@ export default class Header extends Component {
                         <li>{account}</li>
                         <li>{login}</li>
                     </ul>
-                    <img className='hamburger' src={require('../../images/hamburger_menu.svg')} alt="" ></img>
+                    {/* <img className='hamburger' src={require('../../images/hamburger_menu.svg')} alt="" ></img> */}
+                    <NavDrawer/>
                 </nav>
             </header>
         )
